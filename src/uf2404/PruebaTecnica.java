@@ -13,7 +13,7 @@ public class PruebaTecnica {
 					System.out.println(i + " es par");
 				}
 			} else {
-				System.out.println(i + " es impar");
+				System.out.println(i + " es impar ");
 			}
 
 		} // for

@@ -18,7 +18,7 @@ public class PaisesCoronavirus {
 		int total = 0;
 		Scanner sc = new Scanner(System.in);
 		for (int i = 0; i < PAISES.length; i++) {
-			System.out.println("Existe algun caso de coronavirus en " + PAISES[i] + "? S- si N-no ");
+			System.out.println(" Existe algun caso de coronavirus en " + PAISES[i] + "? S- si N-no ");
 			String respuesta = sc.nextLine();
 			if (respuesta.equalsIgnoreCase("S")) {
 				paisesInfectados[i] = true;
