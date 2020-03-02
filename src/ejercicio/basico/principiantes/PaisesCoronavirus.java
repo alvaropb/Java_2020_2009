@@ -6,7 +6,7 @@ public class PaisesCoronavirus {
 	/**
 	 * 1º recorrer paises, preguntar si existe algun caso de coronavirus en caso
 	 * afirmativo, preguntar numero de infectados Finalmente, Mostrar paises libres
-	 * de coronavirus. Mostrar paises infectados junto cpn su numero de casos. Total
+	 * de coronavirus. Mostrar paises infectados junto con su numero de casos. Total
 	 * de personas infectadas .
 	 *
 	 * @param args
