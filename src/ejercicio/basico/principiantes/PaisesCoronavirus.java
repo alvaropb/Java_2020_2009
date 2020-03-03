@@ -20,14 +20,14 @@ public class PaisesCoronavirus {
 		for (int i = 0; i < PAISES.length; i++) {
 			System.out.println("Existe algun caso de coronavirus en " + PAISES[i] + "? S- si N-no ");
 			String respuesta = sc.nextLine();
-			if (respuesta.equalsIgnoreCase("S")) {
+			if ("S".equalsIgnoreCase(respuesta)) {
 				paisesInfectados[i] = true;
 				System.out.println("¿cuantos casos de coronavirus se han detectado?");
 				int numCasos = Integer.parseInt(sc.nextLine());
 				numeroInfectados[i] = numCasos;
-			}
+			} // fin if
 			total += numeroInfectados[i];
-		}
+		} // fin for
 
 		System.out.println("Mostrando resultados");
 		for (int i = 0; i < numeroInfectados.length; i++) {
@@ -35,7 +35,7 @@ public class PaisesCoronavirus {
 
 			System.out.println(
 					numeroInfectados[i] > 0 ? "hay ." + numeroInfectados[i] + " infectados" : "No hay infectados");
-		}
+		} // fin for
 		sc.close();
 		System.out.println("total de infectados en la lista de paises= " + total);
 	}// fin main
