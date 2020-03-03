@@ -2,7 +2,7 @@ package ejercicio.basico.principiantes;
 
 import java.util.Scanner;
 
-public class PaisesCoronavirus {
+public class PaisesCoronavirusLocal {
 	/**
 	 * 1º recorrer paises, preguntar si existe algun caso de coronavirus en caso
 	 * afirmativo, preguntar numero de infectados Finalmente, Mostrar paises libres
