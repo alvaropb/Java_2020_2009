@@ -28,7 +28,7 @@ public class PaisVista {
 		while (opcion != 6) {
 			switch (opcion) {
 			case Constantes.UNO:// 1.- Introducir un país
-				// introducirPais(paises);
+				introducirPais();
 
 				break;
 			case Constantes.DOS:// 2.- Buscar un país
@@ -70,18 +70,16 @@ public class PaisVista {
 		System.out.println(Constantes.SALIR);
 	}
 
-	private void introducirPais(ArrayList<Pais> paises) {
+	private void introducirPais() {
 		Pais paisAux = new Pais();
 		System.out.println(Constantes.INTRO_NOMBRE);
 		paisAux.setNombre(sc.nextLine());
 		System.out.println(Constantes.INTRO_NUMERO_CASOS);
 		paisAux.setNumCasos(Integer.parseInt(sc.nextLine()));
-		if (pNegocio.insertarPais(paises, paisAux)) {
-			System.out.println(Constantes.INSERT_EXITOSO);
-		} else {
-			System.out.println(Constantes.INSERT_FALLIDO);
-		}
-		;
+		Pais pais = paisDAOImpl.create(paisAux);
+		System.out.println(Constantes.INSERT_EXITOSO);
+		pais.toString();
+
 	}
 
 	private int buscarPais(ArrayList<Pais> paises) {

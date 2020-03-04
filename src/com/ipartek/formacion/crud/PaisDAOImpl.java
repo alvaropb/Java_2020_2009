@@ -47,8 +47,8 @@ public class PaisDAOImpl implements PaisDAO {
 
 	@Override
 	public Pais create(Pais pais) {
-		// TODO Auto-generated method stub
-		return null;
+		paises.add(pais);
+		return pais;
 	}
 
 	@Override
