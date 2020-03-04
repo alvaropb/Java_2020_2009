@@ -53,8 +53,12 @@ public class PaisDAOImpl implements PaisDAO {
 
 	@Override
 	public int readOne(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+		for (int i = 0; i < paises.size(); i++) {
+			if (id.equalsIgnoreCase(paises.get(i).getNombre())) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	@Override
@@ -82,15 +86,26 @@ public class PaisDAOImpl implements PaisDAO {
 	}
 
 	@Override
-	public Pais Update(Pais pais) {
-		// TODO Auto-generated method stub
+	public Pais update(Pais pais) {
+		for (int i = 0; i < paises.size(); i++) {
+			if (pais.getNombre().equalsIgnoreCase(paises.get(i).getNombre())) {
+				paises.get(i).setNumCasos(pais.getNumCasos());
+				return paises.get(i);
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public boolean delete(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean correcto = false;
+		for (int i = 0; i < paises.size(); i++) {
+			if (id.equalsIgnoreCase(paises.get(i).getNombre())) {
+				paises.remove(i);
+				correcto = true;
+			}
+		}
+		return correcto;
 	}
 
 	public ArrayList<Pais> getPaises() {

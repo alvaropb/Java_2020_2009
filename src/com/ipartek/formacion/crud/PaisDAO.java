@@ -31,7 +31,7 @@ public interface PaisDAO {
 	 * @param pais
 	 * @return
 	 */
-	public Pais Update(Pais pais);
+	public Pais update(Pais pais);
 
 	/**
 	 * Elimina un pais
