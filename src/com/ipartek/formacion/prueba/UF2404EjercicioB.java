@@ -48,15 +48,7 @@ public class UF2404EjercicioB {
 				break;
 			}
 		} while (continuar);// fin do while
-		// pinta menu por pantalla
 
-		// pedir una opcion al usuario por pantalla
-
-		// hacer switch case
-
-		// while(continuar) continuar sera una variabelbooleana que se pondra a false si
-		// pulsamos 3
-		// cerrar scanner
 		sc.close();
 	}// fin main
 

@@ -88,7 +88,13 @@ public class PerroDAOImpl implements PerroDAO {
 
 	@Override
 	public boolean update(Perro p) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < perros.size(); i++) {
+			if (p.getId() == perros.get(i).getId()) {
+				perros.get(i).setNombre(p.getNombre());
+				perros.get(i).setRaza(p.getRaza());
+				return true;
+			}
+		}
 		return false;
 	}
 

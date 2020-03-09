@@ -15,6 +15,9 @@ public class Constantes {
 	public static final String REGISTRO_ELIMINADO_TRUE = "Registro eliminado";
 	public static final String REGISTRO_ELIMINADO_FALSE = "Ocurrio un error a la hora de eliminar ese registro";
 	public static final String CREAR_REGISTRO = "6.- Crear registro";
+	public static final String ACTUALIZAR_REGISTRO = "7.- Actualizar registro";
+	public static final String REGISTRO_ACTUALIZADO_TRUE = "Registro actualizado";
+	public static final String REGISTRO_ACTUALIZADO_FALSE = "Ocurrio un error a la hora de actualizar ese registro";
 	public static final String SALIR_MENU = "8.- Salir";
 	public static final int UNO = 1;
 	public static final int DOS = 2;
