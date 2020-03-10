@@ -11,12 +11,21 @@ public class Vueltas {
 
 		// TODO vuestro marron
 		float resto = entregado;
-		for (int i = 0; i < BILLETES_MONEDAS.length; i++) {
-			if (BILLETES_MONEDAS[i] < resto) {
-				int monedicas = (int) (resto / BILLETES_MONEDAS[i]);
-				vueltas[i] = monedicas;
-				resto -= monedicas * BILLETES_MONEDAS[i];
-			}
+		try {
+			calcularVueltas(importe, entregado);
+			for (int i = 0; i < BILLETES_MONEDAS.length; i++) {
+				if (BILLETES_MONEDAS[i] <= resto) {
+					int monedicas = (int) (resto / BILLETES_MONEDAS[i]);
+					vueltas[i] = monedicas;
+					resto -= monedicas * BILLETES_MONEDAS[i];
+				}
+				if (resto == 0) {
+					break;
+				}
+			} // fin for
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return vueltas;
