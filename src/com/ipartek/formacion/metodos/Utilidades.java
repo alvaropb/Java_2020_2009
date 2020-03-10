@@ -5,6 +5,7 @@ public class Utilidades {
 	public static final String IDIOMA_CASTELLANO = "es";
 	public static final String IDIOMA_EUSKERA = "eu";
 	public static final String IDIOMA_INGLES = "en";
+	public static final String CARACTERES = "TRWAGMYFPDXBNJZSQVHLCKE";
 
 	static void saludar(String nombre) {
 		System.out.println("Hola  " + nombre);
@@ -17,16 +18,27 @@ public class Utilidades {
 	 *      IDIOMA_CASTELLANO
 	 * @param nombre
 	 * @param idioma
+	 * @throws Exception
 	 */
-	static void saludar(String nombre, String idioma) {
-		if (idioma.equalsIgnoreCase(IDIOMA_CASTELLANO)) {
-			System.out.println("Hola  " + nombre);
-		} else if (idioma.equalsIgnoreCase(IDIOMA_EUSKERA)) {
-			System.out.println("kaixo  " + nombre);
-		} else if (idioma.equalsIgnoreCase(IDIOMA_INGLES)) {
-			System.out.println("Hello  " + nombre);
+	static String saludar(String nombre, String idioma) throws Exception {
+		String cadenaReturn = "";
+
+		switch (idioma) {
+		case IDIOMA_CASTELLANO:
+			cadenaReturn = "Hola " + nombre;
+			break;
+		case IDIOMA_EUSKERA:
+			cadenaReturn = "kaixo " + nombre;
+			break;
+		case IDIOMA_INGLES:
+			cadenaReturn = "Hello " + nombre;
+			break;
+		default:
+			throw new Exception("Idioma incorrecto ->" + idioma);
+
 		}
-		System.out.println("No se selecciono idioma");
+
+		return cadenaReturn;
 	}
 
 	static int suma(int a, int b) {
@@ -38,9 +50,41 @@ public class Utilidades {
 		return caracteres.charAt(dni % 23);
 	}
 
-	static char calcularLetraDni(String dni) {
-		String caracteres = "TRWAGMYFPDXBNJZSQVHLCKE";
-		return caracteres.charAt(Integer.parseInt(dni) % 23);
+	static char calcularLetraDni(String dni) throws Exception {
+
+		if (dni != null && dni.length() == 8) {
+
+		} else {
+			throw new Exception("Formato dni no valido ->" + dni);
+		}
+
+		return CARACTERES.charAt(Integer.parseInt(dni) % 23);
 	}
+
+	/**
+	 * Ordena de menor a mayor un array de enteros
+	 * 
+	 * @see https://www.youtube.com/watch?v=lyZQPjUT5B4&t=65s
+	 * @param aDesordenado int[] array desordenado
+	 * @return int[] array ordenado de menor a mayor
+	 */
+	static int[] bubbleShort(int[] aDesordenado) {
+
+		int[] aOrdenado = new int[aDesordenado.length];
+		aOrdenado = aDesordenado;
+		int aux = 0;
+		// TODO ordenar el array de enteros con bubble short
+		for (int i = 0; i < aOrdenado.length; i++) {
+			for (int j = i + 1; j < aOrdenado.length; j++) {
+				if (aOrdenado[j] < aOrdenado[i]) {
+					aux = aOrdenado[i];
+					aOrdenado[i] = aOrdenado[j];
+					aOrdenado[j] = aux;
+				} // fin if
+			} // fin for j
+		} // fin for i
+
+		return aOrdenado;
+	}// fin bubbleShort
 
 }
