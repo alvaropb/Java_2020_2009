@@ -78,4 +78,9 @@ public class Persona {
 		+ ", telefono=" + telefono + ", email=" + email + ", numeroPersonal=" + numeroPersonal + "]";
     }
 
+    public String toStringLinea() {
+	return nombre + ";" + empresa + ";" + fechaNacimiento + ";" + telefono + ";" + email + ";" + numeroPersonal
+		+ ";";
+    }
+
 }
