@@ -2,10 +2,10 @@ package ejercicio.gestionMVC.clinica.dao;
 
 import java.util.ArrayList;
 
-import ejercicio.gestionMVC.clinica.idao.IRevisionDAO;
+import ejercicio.gestionMVC.clinica.idao.IDAO;
 import ejercicio.gestionMVC.clinica.model.Revision;
 
-public class RevisionDAOImpl implements IRevisionDAO {
+public class RevisionDAOImpl implements IDAO<Revision> {
 
     ArrayList<Revision> revisiones;
 
@@ -38,7 +38,6 @@ public class RevisionDAOImpl implements IRevisionDAO {
 	return revision;
     }
 
-    @Override
     public ArrayList<Revision> getAllById(int idAnimal) {
 	ArrayList<Revision> revisionesReturn = new ArrayList<Revision>();
 	for (int i = 0; i < revisiones.size(); i++) {
@@ -67,15 +66,15 @@ public class RevisionDAOImpl implements IRevisionDAO {
     }
 
     @Override
-    public Revision delete(int idRevision) {
-	Revision revision = new Revision();
+    public int delete(Revision revision) {
+	int idRevision = 0;
 	for (int i = 0; i < revisiones.size(); i++) {
-	    if (idRevision == revisiones.get(i).getIdRevision()) {
-		revision = revisiones.get(i);
+	    if (revision.getIdRevision() == revisiones.get(i).getIdRevision()) {
+		idRevision = revisiones.get(i).getIdRevision();
 		revisiones.remove(i);
 	    }
 	}
-	return revision;
+	return idRevision;
     }
 
 }

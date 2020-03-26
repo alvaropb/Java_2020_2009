@@ -5,16 +5,15 @@ import java.util.Scanner;
 
 import ejercicio.gestionMVC.clinica.dao.AnimalDAOImpl;
 import ejercicio.gestionMVC.clinica.dao.RevisionDAOImpl;
-import ejercicio.gestionMVC.clinica.idao.IAnimalDAO;
-import ejercicio.gestionMVC.clinica.idao.IRevisionDAO;
+import ejercicio.gestionMVC.clinica.idao.IDAO;
 import ejercicio.gestionMVC.clinica.model.Animal;
 import ejercicio.gestionMVC.clinica.model.Revision;
 
 public class PruebasDAO {
 
     static Scanner sc;
-    static IRevisionDAO revisiones;
-    static IAnimalDAO animales;
+    static IDAO<Revision> revisiones;
+    static IDAO<Animal> animales;
 
     public static void main(String[] args) {
 	sc = new Scanner(System.in);
@@ -68,8 +67,8 @@ public class PruebasDAO {
 	Animal animal = new Animal();
 	System.out.println("Introduzca id a buscar");
 	id = Integer.parseInt(sc.nextLine());
-	animal = animales.getById(id);
-	revisionesReturn = revisiones.getAllById(animal.getId());
+	animal = (Animal) animales.getById(id);
+	revisionesReturn = ((RevisionDAOImpl) revisiones).getAllById(animal.getId());
 	System.out.println(revisionesReturn);
 
     }
@@ -79,7 +78,7 @@ public class PruebasDAO {
 	Animal animal = new Animal();
 	System.out.println("Introduzca id a buscar");
 	id = Integer.parseInt(sc.nextLine());
-	animal = animales.getById(id);
+	animal = (Animal) animales.getById(id);
 	System.out.println("El animal buscado es:");
 	System.out.println(animal);
     }

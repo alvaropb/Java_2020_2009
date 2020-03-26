@@ -2,10 +2,10 @@ package ejercicio.gestionMVC.clinica.dao;
 
 import java.util.ArrayList;
 
-import ejercicio.gestionMVC.clinica.idao.IAnimalDAO;
+import ejercicio.gestionMVC.clinica.idao.IDAO;
 import ejercicio.gestionMVC.clinica.model.Animal;
 
-public class AnimalDAOImpl implements IAnimalDAO {
+public class AnimalDAOImpl implements IDAO<Animal> {
 
     private ArrayList<Animal> animales;
 
