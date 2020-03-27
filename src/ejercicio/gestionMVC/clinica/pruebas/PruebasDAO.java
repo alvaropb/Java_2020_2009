@@ -3,6 +3,7 @@ package ejercicio.gestionMVC.clinica.pruebas;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import ejercicio.gestionMVC.clinica.dao.AnimalDAOFileTetxImpl;
 import ejercicio.gestionMVC.clinica.dao.AnimalDAOImpl;
 import ejercicio.gestionMVC.clinica.dao.RevisionDAOImpl;
 import ejercicio.gestionMVC.clinica.idao.IDAO;
@@ -14,11 +15,15 @@ public class PruebasDAO {
     static Scanner sc;
     static IDAO<Revision> revisiones;
     static IDAO<Animal> animales;
+    static IDAO<Animal> animalesFichero;
+    private static int ids = 0;
 
     public static void main(String[] args) {
 	sc = new Scanner(System.in);
 	revisiones = new RevisionDAOImpl();
 	animales = new AnimalDAOImpl();
+	animalesFichero = new AnimalDAOFileTetxImpl();
+
 	int opcion = 0;
 	// creamos una revision a proposito de las pruebas de la opcion 3
 	Revision revision = new Revision();
@@ -28,6 +33,7 @@ public class PruebasDAO {
 	revision.setMotivoRevision("Presenta fiebre");
 	revision.setTratamiento("Paracetamol");
 	revisiones.create(revision);
+	((AnimalDAOFileTetxImpl) animalesFichero).ficheroToArray();
 
 	do {
 	    System.out.println("Introduzca una opcion:");
@@ -40,7 +46,6 @@ public class PruebasDAO {
 	    switch (opcion) {
 	    case 1:
 		registrarMascota();
-		System.out.println(((AnimalDAOImpl) animales).getAnimales().get(0));
 
 		break;
 	    case 2:
@@ -57,7 +62,7 @@ public class PruebasDAO {
 	    }
 
 	} while (opcion != 5);
-
+	((AnimalDAOFileTetxImpl) animalesFichero).arrayToFichero();
 	sc.close();
     }
 
@@ -67,7 +72,8 @@ public class PruebasDAO {
 	Animal animal = new Animal();
 	System.out.println("Introduzca id a buscar");
 	id = Integer.parseInt(sc.nextLine());
-	animal = (Animal) animales.getById(id);
+	// animal = (Animal) animales.getById(id);
+	animal = (Animal) animalesFichero.getById(id);
 	revisionesReturn = ((RevisionDAOImpl) revisiones).getAllById(animal.getId());
 	System.out.println(revisionesReturn);
 
@@ -78,7 +84,8 @@ public class PruebasDAO {
 	Animal animal = new Animal();
 	System.out.println("Introduzca id a buscar");
 	id = Integer.parseInt(sc.nextLine());
-	animal = (Animal) animales.getById(id);
+	// animal = (Animal) animales.getById(id);
+	animal = (Animal) animalesFichero.getById(id);
 	System.out.println("El animal buscado es:");
 	System.out.println(animal);
     }
@@ -93,7 +100,10 @@ public class PruebasDAO {
 	animal.setNombre(sc.nextLine());
 	System.out.println("Introduzca raza");
 	animal.setRaza(sc.nextLine());
-	animales.create(animal);
+	animal.setId(ids);
+	ids++;
+	// animales.create(animal);
+	animalesFichero.create(animal);
 
     }
 }

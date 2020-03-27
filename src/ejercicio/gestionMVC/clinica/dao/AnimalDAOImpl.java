@@ -24,16 +24,10 @@ public class AnimalDAOImpl implements IDAO<Animal> {
 
     @Override
     public int create(Animal animal) {
-	int idMax = 1;
-	for (int i = 0; i < animales.size(); i++) {
-	    if (idMax < animales.get(i).getId()) {
-		idMax = animales.get(i).getId();
-	    }
-	}
-	animal.setId(idMax);
+
 	animales.add(animal);
 
-	return idMax;
+	return animal.getId();
     }
 
     @Override

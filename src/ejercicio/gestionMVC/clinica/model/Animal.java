@@ -1,6 +1,10 @@
 package ejercicio.gestionMVC.clinica.model;
 
-public class Animal {
+public class Animal implements java.io.Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     /*
      * nombre especie raza edad
      */
