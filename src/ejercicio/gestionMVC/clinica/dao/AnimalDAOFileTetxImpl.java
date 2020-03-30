@@ -19,7 +19,7 @@ import ejercicio.gestionMVC.clinica.model.Animal;
  * @author Alvaro
  *
  */
-public class AnimalDAOFileTetxImpl extends AnimalDAOImpl implements IDAO<Animal> {
+public class AnimalDAOFileTetxImpl extends AnimalDAOImpl implements IDAO<Animal>, AutoCloseable {
 
     File fichero;
 
@@ -36,12 +36,12 @@ public class AnimalDAOFileTetxImpl extends AnimalDAOImpl implements IDAO<Animal>
      * @throws IOException
      */
     public void ficheroToArray() {
-	FileInputStream fis;
-	ObjectInputStream ois = null;
+	// FileInputStream fis;
+	// ObjectInputStream ois = null;
 
-	try {
-	    fis = new FileInputStream(fichero);
-	    ois = new ObjectInputStream(fis);
+	try (FileInputStream fis = new FileInputStream(fichero); ObjectInputStream ois = new ObjectInputStream(fis);) {
+	    ;
+
 	    Animal aux = (Animal) ois.readObject();
 	    while (aux != null) {// TODO hacer que deje de leer cuando llegue al final del fichero para que no
 				 // casque
@@ -50,22 +50,9 @@ public class AnimalDAOFileTetxImpl extends AnimalDAOImpl implements IDAO<Animal>
 		aux = (Animal) ois.readObject();
 	    }
 	    ois.close();
-	} catch (FileNotFoundException e) {
+	} catch (Exception e) {
 
 	    e.printStackTrace();
-	} catch (IOException e) {
-
-	    e.printStackTrace();
-	} catch (ClassNotFoundException e) {
-
-	    e.printStackTrace();
-	} finally {
-	    try {
-		ois.close();
-	    } catch (IOException e) {
-
-		e.printStackTrace();
-	    }
 	}
 
     }
@@ -91,6 +78,12 @@ public class AnimalDAOFileTetxImpl extends AnimalDAOImpl implements IDAO<Animal>
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
+
+    }
+
+    @Override
+    public void close() throws Exception {
+	// TODO Auto-generated method stub
 
     }
 

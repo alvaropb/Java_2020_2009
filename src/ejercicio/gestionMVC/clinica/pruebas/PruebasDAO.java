@@ -18,7 +18,7 @@ public class PruebasDAO {
     static IDAO<Animal> animalesFichero;
     private static int ids = 0;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 	sc = new Scanner(System.in);
 	revisiones = new RevisionDAOImpl();
 	animales = new AnimalDAOImpl();
@@ -66,7 +66,7 @@ public class PruebasDAO {
 	sc.close();
     }
 
-    private static void buscarHistorialMascota() {
+    private static void buscarHistorialMascota() throws Exception {
 	ArrayList<Revision> revisionesReturn = new ArrayList<Revision>();
 	int id = 0;
 	Animal animal = new Animal();
@@ -79,7 +79,7 @@ public class PruebasDAO {
 
     }
 
-    private static void buscarMascota() {
+    private static void buscarMascota() throws Exception {
 	int id = 0;
 	Animal animal = new Animal();
 	System.out.println("Introduzca id a buscar");
@@ -90,7 +90,7 @@ public class PruebasDAO {
 	System.out.println(animal);
     }
 
-    private static void registrarMascota() {
+    private static void registrarMascota() throws Exception {
 	Animal animal = new Animal();
 	System.out.println("Introduzca edad");
 	animal.setEdad(Integer.parseInt(sc.nextLine()));

@@ -12,7 +12,7 @@ public interface IDAO<T> {
      * @param tipo
      * @return id
      */
-    public int create(T tipo);
+    public int create(T tipo) throws Exception;
 
     /**
      * Método que retorna un Tipo pasandole un id
@@ -20,14 +20,14 @@ public interface IDAO<T> {
      * @param id
      * @return Tipo
      */
-    public T getById(int id);
+    public T getById(int id) throws Exception;
 
     /**
      * Método que retorna un listado de tipos
      * 
      * @return ArrayList<T>
      */
-    public ArrayList<T> getAll();
+    public ArrayList<T> getAll() throws Exception;
 
     /**
      * Método que actualiza un animal
@@ -35,13 +35,13 @@ public interface IDAO<T> {
      * @param Tipo
      * @return Tipo
      */
-    public T update(T tipo);
+    public T update(T tipo) throws Exception;
 
     /**
      * Método que elimina un animal del listado pasandole un animal
      * 
      * @param animal
      */
-    public int delete(T tipo);
+    public int delete(T tipo) throws Exception;
 
 }
